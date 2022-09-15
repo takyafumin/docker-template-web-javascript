@@ -21,12 +21,14 @@ Docker環境テンプレート：HTML+Javascript
 ## フォルダ構成
 
 ```
++ .docker/              ・・・docker関連ファイル格納ディレクトリ
+|   + nginx/            ・・・nginx設定
+|
 + app/
 |   + public/           ・・・Web公開ディレクトリ(ドキュメントルート)
 |   + src/              ・・・プログラム格納ディレクトリ
 |   + node_modules/     ・・・node module格納ディレクトリ(.gitignoreにてgit管理除外)
 |
-+ docker/               ・・・docker関連ファイル格納ディレクトリ
 - docker-compose.yml
 - README.md
 ```
@@ -41,7 +43,23 @@ webpackなどを使う場合、`app/src/`にリソースを作成し`app/public/
 
 ```bash
 # docker-compose.ymlファイルと同一フォルダ階層で実行
+# コンテナが起動する
 docker-compose up -d
+```
+
+* コンテナの中で作業する(node)
+
+```bash
+# docker-compose.ymlファイルと同一フォルダ階層で実行
+# dockerコンテナが起動している状態で実行
+docker-compose exec node bash
+
+# コンテナ内でcomposerやlinuxコマンドが実行できる
+ls
+node -v
+
+# コンテナから抜ける
+exit
 ```
 
 * コンテナの停止方法
