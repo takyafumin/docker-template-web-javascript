@@ -8,6 +8,7 @@ Docker環境テンプレート：HTML+Javascript
 - [環境](#環境)
 - [フォルダ構成](#フォルダ構成)
 - [使い方](#使い方)
+- [実行結果サンプル](#実行結果サンプル)
 
 <!-- /code_chunk_output -->
 
@@ -26,15 +27,14 @@ Docker環境テンプレート：HTML+Javascript
 |
 + app/
 |   + public/           ・・・Web公開ディレクトリ(ドキュメントルート)
+|       + dist/         ・・・バンドルファイルの出力先
 |   + src/              ・・・プログラム格納ディレクトリ
 |   + node_modules/     ・・・node module格納ディレクトリ(.gitignoreにてgit管理除外)
+|   - package.json      ・・・npm設定ファイル
 |
 - docker-compose.yml
 - README.md
 ```
-
-webpackなどを使わない場合、`app/public/`にHTML, CSS, Javascriptを作成してください。
-webpackなどを使う場合、`app/src/`にリソースを作成し`app/public/`にバンドル出力するようにしてください。
 
 
 ## 使い方
@@ -45,6 +45,14 @@ webpackなどを使う場合、`app/src/`にリソースを作成し`app/public/
 # docker-compose.ymlファイルと同一フォルダ階層で実行
 # コンテナが起動する
 docker-compose up -d
+
+# node moduleのインストール
+docker-compose exec node npm ci
+
+# webpackでバンドル(develop版)
+docker-compose exec node npm run build
+# webpackでバンドル(production版)
+docker-compose exec node npm run prod
 ```
 
 * コンテナの中で作業する(node)
@@ -68,3 +76,9 @@ exit
 # docker-compose.ymlファイルと同一フォルダ階層で実行
 docker-compose down
 ```
+
+## 実行結果サンプル
+
+`http://localhost/`にアクセスし、ブラウザのデベロッパーツールにて確認。
+
+![実行結果サンプル](./images/result.jpg)
