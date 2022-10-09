@@ -12,14 +12,17 @@ module.exports = {
     },
 
     // エントリーポイントの設定(作業ディレクトリからの相対パス)
-    entry: path.join(__dirname, 'src', 'index.js'),
+    entry: {
+        main: path.join(__dirname, 'src', 'index.js'),
+        sub: path.join(__dirname, 'src', 'sub.js'),
+    },
 
     // ファイルの出力設定
     output: {
-        // 出力するファイル名
-        filename: "main.js",
-
         //  出力先のパス
-        path: path.join(__dirname, 'public/dist')
+        path: path.join(__dirname, 'public/dist'),
+
+        // 出力するファイル名
+        filename: "[name].js",
     }
 };
