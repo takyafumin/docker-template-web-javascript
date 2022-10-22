@@ -1,16 +1,21 @@
-Docker環境テンプレート：HTML+Javascript
+Docker環境テンプレート：node+webpack
 ====================
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
+- [概要](#概要)
 - [環境](#環境)
 - [フォルダ構成](#フォルダ構成)
 - [使い方](#使い方)
 - [実行結果サンプル](#実行結果サンプル)
 
 <!-- /code_chunk_output -->
+
+## 概要
+
+webpackが利用できる開発環境です。
 
 ## 環境
 
